@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  movie_db:
+    image: postgres:14
+    container_name: movie_db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - '5437:5432'
+    networks:
+      - movie_net
+
+
+  movie_back:
+    build: ./
+    container_name: movie_back
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+      - ./media:/app/media
+    ports:
+      - '8000:8000'
+    depends_on:
+      - movie_db
+    networks:
+      - movie_net
+
+networks:
+  movie_net:
+    external: false
