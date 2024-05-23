@@ -54,3 +54,9 @@ class ReviewToMovie(models.Model, ABSModel):
         unique_together = [['user_id', 'movie_id']]
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
+
+
+class View(models.Model, ABSModel):
+    user = models.ForeignKey(User, models.SET_NULL, related_name='views', **nb)
+    movie = models.ForeignKey(Movie, models.CASCADE, related_name='views')
+    total_view_time = models.PositiveIntegerField(**nb)
