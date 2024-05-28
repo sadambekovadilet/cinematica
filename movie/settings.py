@@ -24,10 +24,10 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o*=lxm*qwi%hevv6*^=6o)-mljue*fbqh4e6q25$(-s1nq!h3+'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'cinematica',
 
     #libs
+    'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

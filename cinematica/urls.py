@@ -1,8 +1,8 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
 from . import views
 
 
-urlpatterns = [
-    path('', views.hello_world)
-]
+cinematic_routes = DefaultRouter()
+
+cinematic_routes.register(r"top_list", views.MovieList)
