@@ -24,7 +24,7 @@ class Movie(models.Model, ABSModel):
     name = models.CharField('Название фильма', db_index=True)
     janr = models.ForeignKey(Janr, models.CASCADE, related_name='movies')
     description = models.TextField()
-    authors = models.ManyToManyField(Author)
+    authors = models.ManyToManyField(Author, related_name='movies')
     avatar = models.ImageField(upload_to='media/avatars')
     movie_file = models.FileField(upload_to='media/movies')
     main_artists = models.TextField()

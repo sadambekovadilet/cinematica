@@ -12,7 +12,8 @@ from cinematica.urls import cinematic_routes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/cinematica', include(cinematic_routes.urls)),
+    path('test/', include('cinematica.urls')),
+    path('api/v1/cinematica/', include(cinematic_routes.urls)),
 ]
 
 if settings.DEBUG:
