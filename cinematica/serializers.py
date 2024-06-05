@@ -34,3 +34,15 @@ class MovieViewSerializer(serializers.ModelSerializer):
     class Meta:
         model = View
         fields = ('id', 'movie', 'user', 'total_view_time')
+
+
+class MovieDetailSerializerList(serializers.ModelSerializer):
+    authors = AuthorSerializerDetail(many=True)
+    views_count = serializers.IntegerField()
+    reviews_count = serializers.IntegerField()
+
+    class Meta:
+        model = Movie
+        fields = ('id', 'name', 'description', 'avatar', 'movie_file',
+                  'main_artists', 'artists', 'authors', 'views_count',
+                  'reviews_count')

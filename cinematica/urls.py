@@ -9,5 +9,5 @@ urlpatterns = [
 
 cinematic_routes = DefaultRouter()
 
-cinematic_routes.register(r"top_list", views.MovieList)
+cinematic_routes.register(r"movie", views.MovieViews)
 cinematic_routes.register(r"create_view", views.MovieViewCreate)
